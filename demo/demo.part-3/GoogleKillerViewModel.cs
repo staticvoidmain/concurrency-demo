@@ -21,7 +21,20 @@ namespace demo.part_3
 		public StatsViewModel Stats { get; set; }
 
 		// I've forgotten a lot of this stuff.
-		public ICommand Start { get; }
-		public ICommand Stop { get; }
+		public ICommand Start 
+		{ 
+			get 
+			{
+				return Engine.Instance.StartCommand;
+			} 
+		}
+
+		public ICommand Stop 
+		{ 
+			get 
+			{	
+				return Engine.Instance.StopCommand;
+			} 
+		}
 	}
 }
