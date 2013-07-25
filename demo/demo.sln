@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo.part-1", "part-1\demo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo.part-2", "part-2\demo.part-2.csproj", "{67B3C027-914F-4686-8BD3-9541AD2811EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo.part-3", "demo.part-3\demo.part-3.csproj", "{B03B93CC-00BC-4CE0-8B3F-57393B577134}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo.part-3", "part-3\demo.part-3.csproj", "{B03B93CC-00BC-4CE0-8B3F-57393B577134}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

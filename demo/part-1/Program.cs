@@ -1,85 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Numerics;
 
 namespace part_1
 {
-	public class Helpers
-	{
-		private static readonly long[] cache = new long[256];
-
-		/// <summary>
-		/// We're not memoizing because this is meant to take some time.
-		/// </summary>
-		/// <param name="n"></param>
-		/// <returns></returns>
-		private static long Fib(int n, bool useCache = false)
-		{
-			if (n < 2) { return n; }
-
-			if (useCache)
-			{
-				long cached = FromCache(n);
-
-				if (cached != 0L) { return cached; }
-			}
-
-			long val = Fib(n - 1) + Fib(n - 2);
-
-			if (useCache)
-			{
-				if (cache.Length > n)
-				{
-					cache[n] = val;
-				}
-			}
-
-			return val;
-		}
-
-		private static long FromCache(int n)
-		{
-			long cached = 0L;
-			
-			if (cache.Length > n)
-			{
-				cached = cache[n];
-			}
-
-			return cached;
-		}
-
-		public static long[] FibonacciNumbers(int count)
-		{
-			var fibs = new long[count];
-
-			for (int i = 0; i < count; i++)
-			{
-				fibs[i] = Fib(i);
-			}
-
-			return fibs;
-		}
-
-		internal static BigInteger Sum(long[] seq)
-		{
-			BigInteger sum = BigInteger.Zero;
-
-			foreach (long item in seq)
-			{
-				sum += item;
-			}
-
-			return sum;
-		}
-	}
-
 	/// <summary>
-	/// Lets learn about tasks.
+	/// Lets learn about tasks!
 	/// </summary>
 	public class Program
 	{
@@ -103,13 +29,12 @@ namespace part_1
 		{
 			Task t = Task.Factory.StartNew(() =>
 			{
-				// just to make sure I don't look silly.
+				// just to make sure I don't look silly on the demo.
 				Thread.Sleep(50);
 				Console.WriteLine("Hello from another thread!");
 			});
 
 			Console.WriteLine("Hello from the main thread!");
-
 			Console.ReadLine();
 		}
 
@@ -143,7 +68,6 @@ namespace part_1
 
 			for (int i = 0; i < 5; i++)
 			{
-				// reminder: funky closures
 				tasks[i] = Task.Factory.StartNew(doStuff, i, token);
 			}
 
@@ -167,6 +91,7 @@ namespace part_1
 			})
 			.ContinueWith(fibs =>
 			{
+				// interesting is subjective
 				Console.WriteLine("Sum of first {0} fibonacci numbers = {1}", numberOfDesiredFibs, Helpers.Sum(fibs.Result));
 			});
 
@@ -195,6 +120,9 @@ namespace part_1
 			}
 
 			Thread.Sleep(500);
+			// two questions: 
+			//	- what *should* this do?
+			//	- what *does* this do?
 		}
 
 		#endregion
