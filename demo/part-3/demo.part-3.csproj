@@ -29,9 +29,11 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro">
@@ -61,7 +63,9 @@
     </ApplicationDefinition>
     <Compile Include="Engine.cs" />
     <Compile Include="SettingsViewModel.cs" />
+    <Compile Include="StartEngineCommand.cs" />
     <Compile Include="StatsViewModel.cs" />
+    <Compile Include="StopEngineCommand.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

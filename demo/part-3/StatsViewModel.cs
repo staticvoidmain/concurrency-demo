@@ -10,17 +10,43 @@ namespace demo.part_3
 	// todo: raise property changed
 	public class StatsViewModel : ViewModel
 	{
-		private int totalProcessed;
-		public int TotalProcessed 
+		private int pagesIndexed;
+		private int pagesPerSecond;
+		private Engine _engine;
+		private Timer _timer;
+		
+		public StatsViewModel(Engine _engine)
 		{
-			get { return totalProcessed; }
+			// TODO: Complete member initialization
+			this._engine = _engine;
+
+			this._engine.PageIndexed += _engine_PageIndexed;
+			this._timer = new Timer(UpdateProcessedPerSecond, null, 1000, 1000);
 		}
 
-		public void IncrementTotalProcessed()
+		void _engine_PageIndexed(object sender, EventArgs e)
 		{
-			Interlocked.Increment(ref totalProcessed);
+			int count = Interlocked.Increment(ref pagesIndexed);
+
+			if (count % 2 == 0)
+			{
+				OnPropertyChanged("PagesIndexed");
+			}
 		}
 
-		public int ProcessedPerSecond { get; set; }
+		private void UpdateProcessedPerSecond(object state)
+		{
+			this.PagesPerSecond = (pagesIndexed - pagesPerSecond);
+			this.pagesPerSecond = this.pagesIndexed;
+
+			OnPropertyChanged("PagesPerSecond");
+		}
+
+		public int PagesIndexed 
+		{
+			get { return pagesIndexed; }
+		}
+
+		public int PagesPerSecond { get; set; }
 	}
 }

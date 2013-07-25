@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace demo.part_3
 {
@@ -13,8 +8,8 @@ namespace demo.part_3
 
 		public GoogleKillerViewModel()
 		{
-			Settings = new SettingsViewModel();
-			Stats = new StatsViewModel();
+			Settings = new SettingsViewModel(_engine);
+			Stats = new StatsViewModel(_engine);
 		}
 
 		public SettingsViewModel Settings { get; set; }
@@ -25,7 +20,7 @@ namespace demo.part_3
 		{ 
 			get 
 			{
-				return Engine.Instance.StartCommand;
+				return new StartEngineCommand(_engine);
 			} 
 		}
 
@@ -33,7 +28,7 @@ namespace demo.part_3
 		{ 
 			get 
 			{	
-				return Engine.Instance.StopCommand;
+				return new StopEngineCommand(_engine);
 			} 
 		}
 	}
